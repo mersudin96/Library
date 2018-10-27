@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Library {
+	
 	static ArrayList<LogFile>Log=new ArrayList<>();
 	static ArrayList<Account>AccountList=new ArrayList<>();
 	static ArrayList<Book>BookList=new ArrayList<>();
