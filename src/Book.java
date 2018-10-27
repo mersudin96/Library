@@ -29,6 +29,4 @@ public class Book {
 		return "Book: \nbookID=" + bookID + ", \nbookName=" + bookName + ", \nrented=" + rented + "\n";
 	}
 	
-	
-	
 }

@@ -33,12 +33,5 @@ public class Account {
 		return "\nKorisnicki ID: " + accoundID + ", \nKorisnicko ime: " + membersName + ", \nBroj podignutih knjiga: "
 				+ numberBorrovedBooks + "\n";
 	}
-
-	
-	
-	
-	
-	
-	
 	
 }

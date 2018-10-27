@@ -1,6 +1,7 @@
 import java.util.Date;
 
 public class RentBook extends Library {
+	
 	int accountID;
 	int bookID;
 	Date datum;
@@ -108,8 +109,5 @@ public class RentBook extends Library {
 	public String toString() {
 		return "\nID knjige: " + bookID + ", \ndatum izdavanja= " + datum + "\nKorisnik sa ID brojem: " +accountID +"\n";
 	}
-	
-	
-	
 	
 }
