@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Library {
+	
 	static ArrayList<LogFile>Log=new ArrayList<>();
 	static ArrayList<Account>AccountList=new ArrayList<>();
 	static ArrayList<Book>BookList=new ArrayList<>();
@@ -9,9 +11,10 @@ public class Library {
 	public static void main(String[] args) {
 		
 		Scanner unos=new Scanner(System.in);
-		int izborKor;
+		int izborKor=-1;
 		System.out.println("\t * Dobrodosli! *");
 		do {
+			
 			System.out.println("\n"
 					+ "1. - Kreiranje racuna \n"
 					+ "2. - Kreiranje knjiga \n"
@@ -20,8 +23,19 @@ public class Library {
 					+ "5. - Ispisvanje detalja postojecih racuna \n"
 					+ "6. - Log izdavanja knjiga \n"
 					+ "0. - Izlaz");
+			do {
+				try {
+					izborKor=unos.nextInt();
+					if(izborKor<0 || izborKor>6)
+						System.out.println("Pogresan unos. Opcije su od 0-6.");
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Invalida unos. Pokusajte ponovo: ");
+					unos.next();
+				}
+			}while(izborKor<0 || izborKor>6);
 			
-			izborKor=unos.nextInt();
+			
 			switch(izborKor) {
 			case 1:
 				Account account=new Account();
@@ -44,10 +58,31 @@ public class Library {
 			case 3:
 				RentBook rentBook=new RentBook();
 				System.out.print("Unesite vas ID broj: ");
-				int idKor=unos.nextInt();
+				int idKor=-1;
+				do {
+					try {
+						idKor=unos.nextInt();
+						if(idKor<0)
+							System.out.println("Invalidan unos.");
+					}
+					catch(InputMismatchException ex) {
+						System.out.println("Pogresan unos.");
+					}
+				}while(idKor<0);
+				
 				rentBook.accountID=idKor;
 				System.out.print("Unesite ID knjige koju zelite iznajmiti: ");
-				int idKnjige=unos.nextInt();
+				int idKnjige=-1;
+				do {
+					try {
+						idKnjige=unos.nextInt();
+						if(idKnjige<0)
+							System.out.println("Invalidan unos.");
+					}
+					catch(InputMismatchException ex) {
+						System.out.println("Pogresan unos.");
+					}
+				}while(idKnjige<0);
 				rentBook.bookID=idKnjige;
 				rentBook.borrowBook();
 				if(rentBook.postoji) {

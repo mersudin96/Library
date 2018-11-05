@@ -3,7 +3,6 @@ public class LogFile extends RentBook{
 	
 	String status;
 
-	
 	public LogFile(String status) {
 		super();
 		this.status = status;
@@ -18,8 +17,5 @@ public class LogFile extends RentBook{
 	public String toString() {
 		return "\nBookID: " +bookID +"\nAccount ID: " +accountID +"\nStatus: " +status +"\nDatum: " +datum;
 	}
-	
-	
-	
 	
 }
