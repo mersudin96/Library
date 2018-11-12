@@ -1,15 +1,22 @@
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Library {
+public class Library  {
 	
 	static ArrayList<LogFile>Log=new ArrayList<>();
 	static ArrayList<Account>AccountList=new ArrayList<>();
 	static ArrayList<Book>BookList=new ArrayList<>();
 	
-	public static void main(String[] args) {
+	
+	public static void main(String[] args) throws Exception {
 		
+		java.io.File racuni=new java.io.File("src/racuni.txt");
+		PrintWriter pR=new PrintWriter(racuni);
+		java.io.File knjige=new java.io.File("src/knjige.txt");
+		PrintWriter pK=new PrintWriter(knjige);
+
 		Scanner unos=new Scanner(System.in);
 		int izborKor=-1;
 		System.out.println("\t * Dobrodosli! *");
@@ -44,6 +51,7 @@ public class Library {
 				String ime=unos.next();
 				account.membersName=ime;
 				account.accoundID=Account.getNumberOfAccounts();
+				pR.print(account);
 				System.out.println("Racun uspjesno kreiran. " +ime +" vas ID broj je " +account.accoundID);
 				break;
 			case 2:	
@@ -53,6 +61,7 @@ public class Library {
 				String naziv=unos.next();
 				book.bookName=naziv;
 				book.bookID=Book.getNumberOfBooks()+1000;
+				pK.print(book);
 				System.out.println("Knjiga uspjesno dodana u biblioteku. ID knjige : " +book.bookID);
 				break;
 			case 3:
@@ -91,6 +100,7 @@ public class Library {
 					log.bookID=idKnjige;
 					log.status="Izdato";
 					Log.add(log);
+					
 				}
 				break;
 			case 4:
@@ -143,5 +153,7 @@ public class Library {
 			}
 		}while(izborKor!=0);
 		unos.close();
+		pK.close();
+		pR.close();
 	}
 }
